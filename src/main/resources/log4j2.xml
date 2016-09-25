@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="logFolder">logs</Property>
+        <Property name="logFile">crms-log</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Console logger -->
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%date{ABSOLUTE} [%thread] %logger{1} [%level]: %msg%n"/>
+        </Console>
+        <!-- File logger -->
+        <RandomAccessFile name="file" fileName="${logFolder}/${logFile}.log">
+            <PatternLayout pattern="%date{DEFAULT} [%thread] %class{1} [%level]: %msg%n"/>
+        </RandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="file"/>
+            <AppenderRef ref="console"/>
+        </Root>
+        <Logger name="CRMS" level="INFO"/>
+    </Loggers>
+
+</Configuration>
