@@ -30,7 +30,7 @@
             <url>http://repo1.maven.org/maven2/</url>
         </repository>
         <repository>
-            <id>local</id>
+            <id>inProject</id>
             <url>file://localhost/${project.basedir}/lib</url>
         </repository>
     </repositories>
@@ -85,7 +85,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://github.com/madstrix/open-mpi-->
+        <!-- https://github.com/madstrix/open-mpi -->
         <dependency>
             <groupId>org.open-mpi</groupId>
             <artifactId>mpi</artifactId>
