@@ -24,6 +24,17 @@
         <java.version>1.8</java.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>inProject</id>
+            <url>file://localhost/${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,12 +76,20 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.9.10</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://github.com/madstrix/open-mpi -->
+        <dependency>
+            <groupId>org.open-mpi</groupId>
+            <artifactId>mpi</artifactId>
+            <version>1.10</version>
         </dependency>
     </dependencies>
 

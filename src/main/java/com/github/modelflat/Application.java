@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import mpi.*;
 
 @SpringBootApplication
 public class Application {
@@ -38,6 +39,19 @@ public class Application {
         } else {
             startSpring(args);
         }
+
+        /*check mpi*/
+        try {
+            MPI.Init(args);
+            int mpiSize = MPI.COMM_WORLD.getSize();
+            MPI.Finalize();
+            log.info("Application started with MPI on " + mpiSize + " nodes.");
+        } catch (MPIException e) {
+            e.printStackTrace();
+        } catch (UnsatisfiedLinkError e){
+            log.info("Application started with no MPI context");
+        }
+
     }
 
     /**
