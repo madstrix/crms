@@ -20,6 +20,16 @@ public class CommandLineManager {
                     .desc("display this message")
                     .build();
 
+    public static final Option OPTION_HOST_RANK =
+            Option.builder("h")
+                    .longOpt("host")
+                    .hasArg(true)
+                    .optionalArg(false)
+                    .type(Integer.class)
+                    .argName("host rank")
+                    .desc("set host node rank. 0 if omitted")
+                    .build();
+
     private static final String HELP_HEADER = "";
     private static final String HELP_FOOTER = "Source code available at github.com/modelflat/crms";
 
@@ -40,6 +50,13 @@ public class CommandLineManager {
 
     public boolean shouldPrintHelp() {
         return checkForOption(OPTION_HELP) || parsedCommandLine.getOptions().length == 0;
+    }
+
+    public int getHostNodeRank() {
+        if (!checkForOption(OPTION_HOST_RANK)) {
+            return 0;
+        }
+        return Integer.valueOf(parsedCommandLine.getOptionValue(OPTION_HOST_RANK.getLongOpt()));
     }
 
     public static Options getOptions() {
