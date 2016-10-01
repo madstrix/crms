@@ -12,7 +12,7 @@
             <PatternLayout pattern="%date{ABSOLUTE} [%thread] %logger{1} [%level]: %msg%n"/>
         </Console>
         <!-- File logger -->
-        <RandomAccessFile name="file" fileName="${logFolder}/${logFile}.log">
+        <RandomAccessFile name="file" fileName="${logFolder}/${logFile}.log" append="false">
             <PatternLayout pattern="%date{DEFAULT} [%thread] %class{1} [%level]: %msg%n"/>
         </RandomAccessFile>
     </Appenders>

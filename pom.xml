@@ -57,6 +57,19 @@
             <artifactId>jocl</artifactId>
             <version>2.3.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.java.dev.gluegen/gluegen-rt -->
+        <dependency>
+            <groupId>org.jogamp.gluegen</groupId>
+            <artifactId>gluegen-rt-main</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+        <!-- https://github.com/madstrix/open-mpi -->
+        <dependency>
+            <groupId>org.open-mpi</groupId>
+            <artifactId>mpi</artifactId>
+            <version>1.10</version>
+        </dependency>
 
         <!-- Log4j2 -->
         <dependency>
@@ -84,21 +97,67 @@
             <version>6.9.10</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- https://github.com/madstrix/open-mpi -->
+        <!-- Smart asserts -->
         <dependency>
-            <groupId>org.open-mpi</groupId>
-            <artifactId>mpi</artifactId>
-            <version>1.10</version>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+<!--
+
+            &lt;!&ndash; Native libs management &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.jogamp.opencl</groupId>
+                                    <artifactId>jocl</artifactId>
+                                    <type></type>
+                                    <classifier>win32</classifier>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+-->
+
+<!--            &lt;!&ndash; Surefire &ndash;&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    &lt;!&ndash; Native libs for tests &ndash;&gt;
+                    <systemProperties>
+                        <property>
+                            <name>java.library.path</name>
+                            <value>target/lib/</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
 
